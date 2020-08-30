@@ -1,0 +1,72 @@
+<div class="row mt-4">
+    <div class="col">
+        <form>
+            <div class="form-group row">
+                <label for="situtation" class="col-sm-2 col-form-label">Aciliyet Durumu</label>
+                <div class="col-sm-10">
+                    <select class="custom-select" id="situtation">
+                        <option selected>Aciliyet Durumunu Seçiniz.</option>
+                        <option value="1">Acil - 101</option>
+                        <option value="2">Çok acil değil - 102</option>
+                        <option value="3">Bekleyebilirim - 103</option>
+                      </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="bookname" class="col-sm-2 col-form-label">Film İsmi </label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="bookname" placeholder="Zorunlu Alan*">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="writtername" class="col-sm-2 col-form-label">Yönetmen Adı</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="writtername" placeholder="Zorunlu Alan*">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="language" class="col-sm-2 col-form-label">İstenilen Dil</label>
+                <div class="col-sm-10">
+                    <select class="custom-select" id="language">
+                        <option selected>Türkçe</option>
+                        <option value="1">İngilizce</option>
+                        <option value="2">Almanca</option>
+                      </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="message" class="col-sm-2 col-form-label">Mesajınız</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="message">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="email" class="col-sm-2 col-form-label">Email Adresi</label>
+                <div class="col-sm-10">
+                    <input type="email" class="form-control" id="email">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="customCheck1">
+                    <label class="custom-control-label" for="customCheck1">Film bulunduğunda email gelmesini istiyorum.</label>
+
+                </div>
+            </div>
+            <div class="row mt-4 mb-4">
+                <div class="col">
+                    <a routerLink="/movie/wish/list" routerLinkActive="active">Daha önce film istek bildiriminde bulundun mu ? Film İstek Bildirim listesinde duruma göz at. </a>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-10  mt-2">
+                    <button type="submit " class="btn btn-success btn-block ">İstek Bildirisi Tamamla.</button>
+                </div>
+                <div class="col-sm-2 mt-2">
+                    <button type="submit " class="btn btn-danger btn-block ">Temizle</button>
+                </div>
+            </div>
+            <div class="w-100" style="height: 150px;"></div>
+        </form>
+    </div>
+</div>

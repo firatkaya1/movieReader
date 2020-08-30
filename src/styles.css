@@ -1,1 +1,58 @@
-/* You can add global styles to this file, and also import other style files */
+p {
+    padding: 0;
+    margin: 0;
+}
+@font-face {
+    font-family: consolata;
+    src: url(/assets/fonts/consolata.ttf);
+}
+.font-consolata {
+    font-family: consolata;
+}
+html,body  {
+    font-family: consolata;
+
+}
+.bg-special {
+    background-color: #000000;
+    background-image: linear-gradient(180deg, #000000 0%, #01092f 50%, #FF0000 100%);
+}
+.bg-special a {
+    color: #fff;
+}
+.bg-special:hover {
+    background-color: #D9AFD9;
+    background-image: linear-gradient(0deg, #D9AFD9 0%, #97D9E1 100%);
+    color: #000000!important;
+    cursor: pointer;
+    box-shadow: 2px 5px 10px #aaaaaa;
+
+
+}
+.bg-special:hover a {
+    color: #000000!important;
+
+}
+.bg-black {
+    background-color: #000;
+}
+
+.movie-image,
+.movie-name {
+    display: block;
+}
+.movie:hover .movie-image,
+.movie:hover .movie-name
+{
+    display: none;
+} 
+.movie-up {
+    display: none;
+    font-size:15px;
+
+}
+.movie:hover .movie-up
+{
+    display: block;
+}   
+
