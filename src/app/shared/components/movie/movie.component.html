@@ -55,17 +55,21 @@
             <input type="text" class="form-control " id="search" aria-describedby="search" placeholder="Aramak istediğin filmi yaz" autocomplete="off">
         </div>
         <div class="w-100"></div>
-        <div class="col-md-4">
+        <div class="col-md-3">
             <nav aria-label="Page navigation example">
-                <ul class="pagination justify-content-center">
-                  <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                <ul class="pagination">
+                  <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Previous">
+                      <span aria-hidden="true">&laquo;</span>
+                    </a>
                   </li>
                   <li class="page-item"><a class="page-link" href="#">1</a></li>
                   <li class="page-item"><a class="page-link" href="#">2</a></li>
                   <li class="page-item"><a class="page-link" href="#">3</a></li>
                   <li class="page-item">
-                    <a class="page-link" href="#">Next</a>
+                    <a class="page-link" href="#" aria-label="Next">
+                      <span aria-hidden="true">&raquo;</span>
+                    </a>
                   </li>
                 </ul>
             </nav>
@@ -100,8 +104,8 @@
                 <option value="3">Deusth</option>
             </select>
         </div>
-        <div class="col-md-1">
-            <button class="btn btn-success btn-block">Ara</button>
+        <div class="col-md-2">
+            <button class="btn btn-success btn-block">Sırala</button>
         </div>
         <div class="w-100 mb-2"></div>
         <div class="col-md-12">
@@ -300,5 +304,9 @@
 
 <div class="p-4">
     <app-lastsearch></app-lastsearch>
+
+    <app-lastview></app-lastview>
+
+
 </div>
 

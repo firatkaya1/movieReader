@@ -15,6 +15,7 @@ import { InfoComponent } from './shared/components/info/info.component';
 import { ContactComponent } from './shared/components/contact/contact.component';
 import { MoviewishComponent } from './shared/components/moviewish/moviewish.component';
 import { MoviewishlistComponent } from './shared/components/moviewishlist/moviewishlist.component';
+import { LastviewComponent } from './shared/components/lastview/lastview.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { MoviewishlistComponent } from './shared/components/moviewishlist/moview
     InfoComponent,
     ContactComponent,
     MoviewishComponent,
-    MoviewishlistComponent
+    MoviewishlistComponent,
+    LastviewComponent
   ],
   imports: [
     BrowserModule,
