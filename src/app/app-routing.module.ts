@@ -1,3 +1,6 @@
+import { ApiComponent } from './shared/components/api/api.component';
+import { ContactComponent } from './shared/components/contact/contact.component';
+import { AboutusComponent } from './shared/components/aboutus/aboutus.component';
 import { MovieComponent } from './shared/components/movie/movie.component';
 import { MoviewishlistComponent } from './shared/components/moviewishlist/moviewishlist.component';
 import { MoviewishComponent } from './shared/components/moviewish/moviewish.component';
@@ -14,7 +17,11 @@ const routes: Routes = [
   {path:'search/advanced',component:AdvancedsearchComponent},
   {path:'movie',component:MovieComponent},
   {path:'movie/wish',component:MoviewishComponent},
-  {path:'movie/wish/list',component:MoviewishlistComponent}
+  {path:'movie/wish/list',component:MoviewishlistComponent},
+  {path:'me/about',component:AboutusComponent},
+  {path:'me/contact',component:ContactComponent},
+  {path:'me/api',component:ApiComponent},
+  {path:'me/api/document',component:ApiComponent}
 
 ];
 

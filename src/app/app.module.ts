@@ -1,5 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +19,12 @@ import { ContactComponent } from './shared/components/contact/contact.component'
 import { MoviewishComponent } from './shared/components/moviewish/moviewish.component';
 import { MoviewishlistComponent } from './shared/components/moviewishlist/moviewishlist.component';
 import { LastviewComponent } from './shared/components/lastview/lastview.component';
+import { AboutusComponent } from './shared/components/aboutus/aboutus.component';
+import { ApiComponent } from './shared/components/api/api.component';
+import { DocumentComponent } from './document/document.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
 
 @NgModule({
   declarations: [
@@ -31,12 +40,20 @@ import { LastviewComponent } from './shared/components/lastview/lastview.compone
     ContactComponent,
     MoviewishComponent,
     MoviewishlistComponent,
-    LastviewComponent
+    LastviewComponent,
+    AboutusComponent,
+    ApiComponent,
+    DocumentComponent
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    BrowserAnimationsModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
   providers: [],
   bootstrap: [AppComponent]

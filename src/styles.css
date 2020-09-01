@@ -10,8 +10,7 @@ p {
     font-family: consolata;
 }
 html,body  {
-    font-family: consolata;
-
+    font-family: consolata!important;
 }
 .bg-special {
     background-color: #000000;
@@ -56,3 +55,6 @@ html,body  {
     display: block;
 }   
 
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

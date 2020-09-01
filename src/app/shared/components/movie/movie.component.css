@@ -1,0 +1,52 @@
+#movieInfo table,
+#movieInfo mat-paginator {
+    background-color: #23272B;
+    color: #F8F9FA;
+    font-family: consolata!important;
+    
+}
+#movieInfo table th,td {
+    color: #F8F9FA;
+    border: #fff;
+    width: 5.66%;
+    font-size: 15px;
+}
+#movieInfo table td {
+    font-size: 15px;
+}
+#movieInfo ::ng-deep .mat-select-value {
+    color: #fff;
+}
+
+#movieInfo table th {
+    border-bottom: #fff;
+    font-size:24px;
+}
+.w-15 {
+    width: 15%;
+}
+
+[data-toggle="collapse"] .bi-node-plus-fill,
+[data-toggle="collapse"].collapsed .bi-node-minus-fill {
+    display: none;
+}
+
+[data-toggle="collapse"].collapsed .bi-node-plus-fill,
+[data-toggle="collapse"] .bi-node-minus-fill {   
+    display: block;
+}
+.custom-paginator {
+    display: inline-block;
+    position: absolute;
+    right: 0;
+}  
+
+
+@media only screen and (max-width: 600px) {
+    .custom-paginator {
+        display: block;
+        position: relative;
+        width: 100%;
+    }  
+  }
+
