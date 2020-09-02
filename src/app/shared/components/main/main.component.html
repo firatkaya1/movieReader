@@ -7,13 +7,50 @@
     </div>
    <div class="col-md-12 mt-4">
         <h5>       
-            Bir filmde geçen tüm yazıları görmek artı çok kolay. Tek yapman gereken aşağıdaki kutucağa istediğin filmi yazmak.
+            Bir filmde geçen tüm yazıları görmek artık çok kolay. Tek yapman gereken aşağıdaki kutucağa istediğin filmi yazmak.
         </h5>
     </div>
     <div class="w-100" style="height: 50px;"></div>
     <div class="col-md-10 mx-auto ">
             <label for="search" class="tex-dark">Aramak istediğin filmi yaz</label>
-            <input type="text" class="form-control bg-white tex-dark" id="search" placeholder="Harry Potter" aria-describedby="search" autocomplete="off">
+            <form>
+                    <input type="text" 
+                    matInput
+                    [matAutocomplete]="auto" 
+                    [formControl]="myControl"
+                    class="form-control bg-white tex-dark" placeholder="Harry Potter" />
+                    <mat-autocomplete #auto="matAutocomplete" style="height: 250px!important;">
+                        <mat-option *ngFor="let option of filteredOptions | async" [value]="option" style="height: 90px!important;">
+                            <div class="row">
+                                <div class="col-1">
+                                    <img [src]="option.movie_img" width="60px" height="80px" alt="">
+                                </div>
+                                <div class="col-8">
+                                    <div class="row ">
+                                        <div class="col-6 text-left">
+                                            <span class=" h5">{{option.movie_name}} <span class="text-secondary">{{option.movie_date}}</span></span>
+                                        </div>
+                                    </div>
+                                    <div class="row text-secondary">
+                                        <div class="col-6 " style="font-size:12px;">
+                                            {{option.movie_time}}  | {{option.movie_genre}}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-3 mt-2 text-right">
+                                    <img src="/assets/images/star.svg" class="mb-2" width="20px" height="20px" alt="star">
+                                    <img src="/assets/images/star.svg" class="mb-2" width="20px" height="20px" alt="star">
+                                    <img src="/assets/images/star.svg" class="mb-2" width="20px" height="20px" alt="star">
+                                    <img src="/assets/images/star.svg" class="mb-2 mr-2" width="20px" height="20px" alt="star">
+                                    <span class="h5 mt-4">{{option.movie_rating}}</span>
+                                </div>
+                                
+                            </div>
+                            
+                        </mat-option>
+                    </mat-autocomplete>
+                
+            </form>
             <small id="emailHelp" class="form-text text-muted">İstediğin filmi bulamadın mı ? O zaman bunu bize bildir senin için ekleyelim..</small>
     </div>
     <div class="col-md-2 mt-2 text-left">
