@@ -15,7 +15,7 @@ const routes: Routes = [
   {path:'',component:MainComponent},
   {path:'search',component:SearchComponent},
   {path:'search/advanced',component:AdvancedsearchComponent},
-  {path:'movie',component:MovieComponent},
+  {path:'movie/:id',component:MovieComponent},
   {path:'movie/wish',component:MoviewishComponent},
   {path:'movie/wish/list',component:MoviewishlistComponent},
   {path:'me/about',component:AboutusComponent},

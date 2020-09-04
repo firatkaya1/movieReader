@@ -1,7 +1,10 @@
+import { Movie } from './../../models/Movie';
+import { MovieService } from './../../services/movie.service';
 import {MatPaginator} from '@angular/material/paginator';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import {MatSort} from '@angular/material/sort';
+import { ActivatedRoute,Router } from '@angular/router';
 
 
 export interface MovieElements {
@@ -318,8 +321,16 @@ const movies: MovieElements[] = [
 })
 export class MovieComponent implements OnInit {
 
-  constructor() { }
+  private movieId:string;
+  public movieInfo:Movie;
 
+  constructor(private movieService:MovieService,private route: ActivatedRoute) { 
+    this.route.paramMap.subscribe(params => {
+      this.movieId = params.get('id');
+    });
+  }
+
+  
   
   displayedColumns: string[] = ['startTime', 'endTime', 'line', 'message'];
   dataSource = new MatTableDataSource(movies);
@@ -332,10 +343,16 @@ export class MovieComponent implements OnInit {
   ngOnInit() {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
+    this.movieService.getMovieById(this.movieId).subscribe(data => {this.movieInfo = data})
+
   }
 
   applyFilter(filterValue:string) {
       this.dataSource.filter = filterValue.trim().toLocaleLowerCase(); 
+  }
+
+  calculateStars(rating:string):number{
+    return Number(rating.substring(0,3).replace(".",""));
   }
 
 }

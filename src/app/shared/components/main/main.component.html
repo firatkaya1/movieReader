@@ -16,46 +16,118 @@
             <form>
                     <input type="text" 
                     matInput
+                    #searchMovie
                     [matAutocomplete]="auto" 
                     [formControl]="myControl"
+                    (keyup)="getMovies($event)"
                     class="form-control bg-white tex-dark" placeholder="Harry Potter" />
-                    <mat-autocomplete #auto="matAutocomplete" style="height: 250px!important;">
-                        <mat-option *ngFor="let option of filteredOptions | async" [value]="option" style="height: 90px!important;">
-                            <div class="row">
-                                <div class="col-1">
-                                    <img [src]="option.movie_img" width="60px" height="80px" alt="">
-                                </div>
-                                <div class="col-8">
-                                    <div class="row ">
-                                        
-                                        <div class="col-6 text-left">
-                                            <span class=" h5">{{option.movie_name}} <span class="text-secondary">{{option.movie_date}}</span></span>
+                    <mat-autocomplete #auto="matAutocomplete" style="height: 350px!important;">
+                        <ngx-spinner bdColor = "rgb(255,255,255)" class="mb-4" size = "default" color = "#000000" type = "ball-scale-ripple" [fullScreen] = "false"><p class="mt-4" style="color:#000" > Loading... </p>
+                        </ngx-spinner>
+                            <mat-option *ngFor="let option of options " [value]="option" style="height: 90px!important;">
+                                <a [routerLink]="['/movie/', option.movieId]" class="row text-dark" style="text-decoration: none;">
+            
+                                    <div class="col-1">
+                                        <div *ngIf="option.movieImg != 'NOTFOUND' ">
+                                            <img [src]="option.movieImg" width="60px" height="80px" alt="/assets/images">
+                                        </div>
+                                        <div *ngIf="option.movieImg == 'NOTFOUND' ">
+                                            <img src="/assets/images/unknown.svg" width="60px" height="80px" alt="/assets/images">
                                         </div>
                                     </div>
-                                    <div class="row text-secondary">
-                                        <div class="col-6 " style="font-size:12px;">
-                                            {{option.movie_time}}  | {{option.movie_genre}}
+                                    <div class="col-8">
+                                        <div class="row ">
+                                            <div class="col-6 text-left">
+                                                <span class="h5">
+                                                    <span>
+                                                        <span *ngIf=" option.movieName.length > 20">
+                                                            <span *ngIf=" option.movieName.length <= 25">
+                                                                <h5 class="d-inline-block">{{ option.movieName }}
+                                                                    <span class="text-secondary">
+                                                                        <span *ngIf="option.movieReleaseDate != 'NOTFOUND'"> 
+                                                                        ( {{ option.movieReleaseDate }}  )
+                                                                        </span>
+                                                                        <span *ngIf="option.movieReleaseDate == 'NOTFOUND'"> 
+                                                                            ( N/A )
+                                                                        </span>
+                                                                    </span>
+                                                                </h5>
+                                                            </span>
+                                                            <span *ngIf=" option.movieName.length > 25">
+                                                                <h6 class="d-inline-block"><b>{{ option.movieName }}</b>
+                                                                    <span class="text-secondary">
+                                                                        <span *ngIf="option.movieReleaseDate != 'NOTFOUND'"> 
+                                                                            ( {{ option.movieReleaseDate }}  )
+                                                                        </span>
+                                                                        <span *ngIf="option.movieReleaseDate == 'NOTFOUND'"> 
+                                                                            ( N/A )
+                                                                        </span>
+                                                                    </span>
+                                                                </h6>
+                                                            </span>
+                                                        </span>
+                                                        <span *ngIf=" option.movieName.length <= 20">
+                                                            {{ option.movieName }}
+                                                            <span class="text-secondary">
+                                                                <span *ngIf="option.movieReleaseDate != 'NOTFOUND'"> 
+                                                                    ( {{ option.movieReleaseDate }}  )
+                                                                </span>
+                                                                <span *ngIf="option.movieReleaseDate == 'NOTFOUND'"> 
+                                                                    ( N/A )
+                                                                </span>
+                                                            </span>
+                                                        </span>
+                                                    </span> 
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="row text-secondary">
+                                            <div class="col-6 " style="font-size:12px;">
+                                                <span>
+                                                    <span *ngIf="option.movieRating !='NOTFOUND'">
+                                                        {{ option.movieTime }} |
+                                                    </span>
+                                                    <span *ngIf="option.movieRating =='NOTFOUND'">N/A |</span>
+                                                    {{option.movieGenre}}
+                                                </span>
+                                            
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-3 mt-2 text-right">
-                                    <img src="/assets/images/star.svg" class="mb-2" width="20px" height="20px" alt="star">
-                                    <img src="/assets/images/star.svg" class="mb-2" width="20px" height="20px" alt="star">
-                                    <img src="/assets/images/star.svg" class="mb-2" width="20px" height="20px" alt="star">
-                                    <img src="/assets/images/star.svg" class="mb-2 mr-2" width="20px" height="20px" alt="star">
-                                    <span class="h5 mt-4">{{option.movie_rating}}</span>
-                                </div>
-                                
-                            </div>
-                            
-                        </mat-option>
+                                    <div class="col-3 mt-2 text-right">
+                                        <span *ngIf="option.movieRating == 'NOTFOUND' ">
+                                            <img src="/assets/images/star2.svg" width="25px" height="25px" alt="NOTFOUND"  >
+                                        </span>
+                                        <span *ngIf="calculateStars(option.movieRating) > 80  ">
+                                            <img src="/assets/images/star.svg" width="25px" height="25px" alt="star"  *ngFor="let number of [0,1,2,3] ">
+                                        </span>
+                                        <span *ngIf="calculateStars(option.movieRating) > 60 && calculateStars(option.movieRating) <= 80 ">
+                                            <img src="/assets/images/star.svg" width="25px" height="25px" alt="star"  *ngFor="let number of [0,1,2] ">
+                                        </span>
+                                        <span *ngIf="calculateStars(option.movieRating) > 40 && calculateStars(option.movieRating) <= 60 ">
+                                            <img src="/assets/images/star.svg" width="25px" height="25px" alt="star"  *ngFor="let number of [0,1] ">
+                                        </span>
+                                        <span *ngIf="calculateStars(option.movieRating) > 20 && calculateStars(option.movieRating) <= 40 ">
+                                            <img src="/assets/images/star.svg" width="25px" height="25px" alt="star"  *ngFor="let number of [0] ">
+                                        </span>
+                                        <span class="h5 mt-4" *ngIf="option.movieRating != 'NOTFOUND'"> 
+                                            {{ option.movieRating }}
+                                        </span>
+                                        <span *ngIf="option.movieRating == 'NOTFOUND'"> 
+                                            N/A 
+                                        </span>
+                                    </div>
+                                    
+                                </a>
+                            </mat-option>
+                        
                     </mat-autocomplete>
                 
             </form>
             <small id="emailHelp" class="form-text text-muted">İstediğin filmi bulamadın mı ? O zaman bunu bize bildir senin için ekleyelim..</small>
     </div>
     <div class="col-md-2 mt-2 text-left">
-            <button class="btn btn-outline-success btn-block mt-4">Arama Yap</button>
+            <button class="btn btn-outline-success btn-block mt-4" (click)="redirectMovie(searchMovie.value)" >Arama Yap</button>
     </div>
 </div>
     

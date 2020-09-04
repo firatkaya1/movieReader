@@ -5,6 +5,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatAutocompleteModule } from '@angular/material/autocomplete'
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { HttpClient ,HttpClientModule, HTTP_INTERCEPTORS, HttpInterceptor } from '@angular/common/http';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -25,6 +27,7 @@ import { AboutusComponent } from './shared/components/aboutus/aboutus.component'
 import { ApiComponent } from './shared/components/api/api.component';
 import { DocumentComponent } from './document/document.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxSpinnerModule } from "ngx-spinner";
 
 
 
@@ -58,7 +61,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatSortModule,
     MatAutocompleteModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    NgxSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
