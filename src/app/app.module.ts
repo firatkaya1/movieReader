@@ -5,6 +5,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatAutocompleteModule } from '@angular/material/autocomplete'
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import {CookieService} from 'ngx-cookie-service';
 import { HttpClient ,HttpClientModule, HTTP_INTERCEPTORS, HttpInterceptor } from '@angular/common/http';
 
 
@@ -65,7 +66,7 @@ import { NgxSpinnerModule } from "ngx-spinner";
     HttpClientModule,
     NgxSpinnerModule
   ],
-  providers: [],
+  providers: [CookieService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

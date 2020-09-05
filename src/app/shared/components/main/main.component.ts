@@ -2,7 +2,7 @@ import { Router } from '@angular/router';
 import { Movie } from './../../models/Movie';
 import { MovieService } from './../../services/movie.service';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 import { NgxSpinnerService } from "ngx-spinner";
 
 
@@ -27,13 +27,13 @@ export class MainComponent implements OnInit {
 
   public getMovies(event:any){
     this.spinner.show();
-    this.movieService.getMoviesByName(event.target.value ,"desc","movie_rating",10,1).subscribe(
+    this.movieService.getMoviesByName(event.target.value ,"desc","movie_name",10,1).subscribe(
       data => 
       { 
-        
+        this.options = data['content'];
         setTimeout(() => {
           this.spinner.hide();
-          this.options = data['content'];
+         
         }, 1000);
  
       })
