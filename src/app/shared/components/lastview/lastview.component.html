@@ -4,84 +4,22 @@
 <h2  class=" mb-1 text-left tex-dark">Son Ziyaret Ettiklerin</h2>
 <hr class="bg-white m-0 p-0">
 <div class="row text-center mx-auto">
-    <div class="col movie p-0 m-2 bg-special border border-white rounded">
+    <div class="col movie p-0 m-2 bg-special border border-white rounded" *ngFor="let movie of lastVisits" style="height: 200px;">
         <div class="movie-up  text-center position-absolute w-100 mt-2 p-1">
-            <p>Yönetmen <br><b>Quentina Tarantino</b></p>
-            <p>Tür :<span>Dram,Aksiyon,Aşk</span></p>
-            <p>Süre :<span>2h30min</span></p>
-            <p><img src="/assets/images/star.svg" width="20px" height="20px" alt="star"> 8.5 / 10</p>
-            <a href="#" class="btn btn-outline-success btn-sm btn-block mt-2">Filme Git</a>
+            <span *ngIf="movie.movieDirectors.length > 1"><p>Yönetmen <br><b> {{ movie.movieDirectors }} </b></p></span>
+            <p>Tür :<span>{{ movie.movieGenre }}</span></p>
+            <p>Süre :<span>{{ movie.movieTime }}</span></p>
+            <p><img src="/assets/images/star.svg" width="20px" height="20px" alt="star"> <span>{{ movie.movieRating }}</span> / 10</p>
+            <a  target="_blank" [routerLink]="['/movie/', movie.movieId]" class="btn btn-outline-success btn-sm btn-block mt-2">Filme Git</a>
         </div>
-        <span class="movie-image">
-            <img src="/assets/images/mov1.jpg" class="text-center mx-auto mt-2 img-thumbnail" width="100px" height="150px" class="mt-4 mx-auto" alt="yazibiradi">
+        <span class="movie-image mt-1">
+            <img [src]="movie.movieImg" class="text-center mt-4 img-thumbnail" width="95px" height="120px"  alt="yazibiradi">
         </span>
-        <div class="w-100 movie-name"></div>
-        <a href="#" class="p-0 movie-name">
-            Kendi Blogunu Kodla
-        </a>
-    </div>
-    <div class="col movie p-0 m-2 bg-special border border-white rounded">
-        <div class="movie-up  text-center position-absolute w-100 mt-2 p-1">
-            <p>Yönetmen <br><b>Quentina Tarantino</b></p>
-            <p>Tür :<span>Dram,Aksiyon,Aşk</span></p>
-            <p>Süre :<span>2h30min</span></p>
-            <p><img src="/assets/images/star.svg" width="20px" height="20px" alt="star"> 8.5 / 10</p>
-            <a href="#" class="btn btn-outline-success btn-sm btn-block mt-2">Filme Git</a>
+        <div class="movie-name">
+            <a target="_blank" [routerLink]="['/movie/', movie.movieId]" class="p-0 movie-name">
+                Filme Git
+            </a>
         </div>
-        <span class="movie-image">
-            <img src="/assets/images/mov1.jpg" class="text-center mx-auto mt-2 img-thumbnail" width="100px" height="150px" class="mt-4 mx-auto" alt="yazibiradi">
-        </span>
-        <div class="w-100 movie-name"></div>
-        <a href="#" class="p-0 movie-name">
-            Kendi Blogunu Kodla
-        </a>
-    </div>
-    <div class="col movie p-0 m-2 bg-special border border-white rounded">
-        <div class="movie-up  text-center position-absolute w-100 mt-2 p-1">
-            <p>Yönetmen <br><b>Quentina Tarantino</b></p>
-            <p>Tür :<span>Dram,Aksiyon,Aşk</span></p>
-            <p>Süre :<span>2h30min</span></p>
-            <p><img src="/assets/images/star.svg" width="20px" height="20px" alt="star"> 8.5 / 10</p>
-            <a href="#" class="btn btn-outline-success btn-sm btn-block mt-2">Filme Git</a>
-        </div>
-        <span class="movie-image">
-            <img src="/assets/images/mov1.jpg" class="text-center mx-auto mt-2 img-thumbnail" width="100px" height="150px" class="mt-4 mx-auto" alt="yazibiradi">
-        </span>
-        <div class="w-100 movie-name"></div>
-        <a href="#" class="p-0 movie-name">
-            Kendi Blogunu Kodla
-        </a>
-    </div>
-    <div class="col movie p-0 m-2 bg-special border border-white rounded">
-        <div class="movie-up  text-center position-absolute w-100 mt-2 p-1">
-            <p>Yönetmen <br><b>Quentina Tarantino</b></p>
-            <p>Tür :<span>Dram,Aksiyon,Aşk</span></p>
-            <p>Süre :<span>2h30min</span></p>
-            <p><img src="/assets/images/star.svg" width="20px" height="20px" alt="star"> 8.5 / 10</p>
-            <a href="#" class="btn btn-outline-success btn-sm btn-block mt-2">Filme Git</a>
-        </div>
-        <span class="movie-image">
-            <img src="/assets/images/mov1.jpg" class="text-center mx-auto mt-2 img-thumbnail" width="100px" height="150px" class="mt-4 mx-auto" alt="yazibiradi">
-        </span>
-        <div class="w-100 movie-name"></div>
-        <a href="#" class="p-0 movie-name">
-            Kendi Blogunu Kodla
-        </a>
-    </div>
-    <div class="col movie p-0 m-2 bg-special border border-white rounded">
-        <div class="movie-up  text-center position-absolute w-100 mt-2 p-1">
-            <p>Yönetmen <br><b>Quentina Tarantino</b></p>
-            <p>Tür :<span>Dram,Aksiyon,Aşk</span></p>
-            <p>Süre :<span>2h30min</span></p>
-            <p><img src="/assets/images/star.svg" width="20px" height="20px" alt="star"> 8.5 / 10</p>
-            <a href="#" class="btn btn-outline-success btn-sm btn-block mt-2">Filme Git</a>
-        </div>
-        <span class="movie-image">
-            <img src="/assets/images/mov1.jpg" class="text-center mx-auto mt-2 img-thumbnail" width="100px" height="150px" class="mt-4 mx-auto" alt="yazibiradi">
-        </span>
-        <div class="w-100 movie-name"></div>
-        <a href="#" class="p-0 movie-name">
-            Kendi Blogunu Kodla
-        </a>
+        
     </div>
 </div> 

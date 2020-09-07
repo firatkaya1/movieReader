@@ -1,12 +1,11 @@
 
+<ngx-spinner bdColor = "rgb(255,255,255)" class="mx-auto text-center" size = "medium" color = "#6D67FE" type = "ball-scale-ripple" [fullScreen] = "true">
+    <p class="mt-4 mx-auto text-center" style="color:#000" > Arama sonuçları getiriliyor... </p>
+</ngx-spinner>
+
 <div class="row mt-4 ">
-    <div class="col-md-2 text-center pl-0">
-        <div *ngIf="movieInfo.movieImg != 'NOTFOUND' ">
-            <img [src]="movieInfo.movieImg"  width="200px" height="250px" alt="/assets/images">
-        </div>
-        <div *ngIf="movieInfo.movieImg == 'NOTFOUND' ">
-            <img src="/assets/images/unknown.svg"  width="200px" height="250px" alt="/assets/images">
-        </div>
+    <div class="col-md-2 text-center mt-4">
+        <img src="{{ movieInfo?.movieImg }}"  class="img-thumbnail border-dark" width="120px" height="170px"  [alt]="movieInfo.movieImg">
     </div>
     <div class="col-md-10">
         <div class="row">
@@ -70,7 +69,7 @@
                 </span>
             </div>
             <div class="col-md-6  mt-4">
-                <p>Toplam Oylama : <span class="font-weight-bold">{{movieInfo.movieRating}}</span></p>
+                <p>Toplam Oylama : <span class="font-weight-bold">{{movieInfo.movieVote}}</span></p>
                 <p>Tür : <span class="font-weight-bold"> {{movieInfo.movieGenre}}</span></p>
                 <p>Süre : <span class="font-weight-bold"> {{movieInfo.movieTime}}</span> </p>
                 
@@ -87,7 +86,7 @@
 </div> 
 <div class="row">
     <div class="col-md-12 mt-1 mb-1">
-        <a class="btn btn-dark btn-block w-100" id="openMovieInfo" data-toggle="collapse" href="#movieInfo" role="button" aria-expanded="false" aria-controls="movieInfo" >
+        <a class="btn btn-block w-100" [ngClass]="isSubtitleExists ? 'btn-success' : 'btn-danger'" id="openMovieInfo" data-toggle="collapse" href="#movieInfo" role="button" aria-expanded="false" aria-controls="movieInfo" >
             Film İçinde Geçen Konuşmalar
             <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-node-plus-fill float-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" d="M11 13a5 5 0 1 0-4.975-5.5H4A1.5 1.5 0 0 0 2.5 6h-1A1.5 1.5 0 0 0 0 7.5v1A1.5 1.5 0 0 0 1.5 10h1A1.5 1.5 0 0 0 4 8.5h2.025A5 5 0 0 0 11 13zm.5-7.5a.5.5 0 0 0-1 0v2h-2a.5.5 0 0 0 0 1h2v2a.5.5 0 0 0 1 0v-2h2a.5.5 0 0 0 0-1h-2v-2z"/>
@@ -98,17 +97,13 @@
         </a>
     </div>
     <div class="row collapse show" id="movieInfo" >
-        <div class="col-md-12">
+        <div class="col-md-12" >
             <p class="mt-4 p-2">İçinde bulmak istediklerini aşağıdaki arama kutusuna yaz. Senin için onu hemen getirelim.</p>
-
         </div>
         <div class="col-9 mx-auto mb-4" >
             <input type="text"  (keyup)="applyFilter($event.target.value)" class="form-control " id="search" aria-describedby="search" placeholder="Aramak istediğin kelimeyi,dakikayı yaz" autocomplete="off">
         </div>
-        <div class="w-100"></div>
-        
-        <div class="w-100 mb-2"></div>
-
+        <div class="w-100 mb-2" ></div>
         <div class="col-md-12 mx-auto p-0 m-0  mb-4">
             <mat-paginator [pageSizeOptions]="[10,20,30,40,50,100,200,500]" showFirstLastButtons class="custom-paginator" ></mat-paginator>
             <table mat-table [dataSource]="dataSource" matSort class="w-100">
@@ -116,21 +111,21 @@
                 <ng-container matColumnDef="line" >
                     <th mat-header-cell *matHeaderCellDef mat-sort-header  class="w-15" > Satır </th>
                     <td mat-cell *matCellDef="let element"  class="w-15" > {{element.line}} </td>
-                  </ng-container>
+                </ng-container>
 
                 <ng-container matColumnDef="startTime"  >
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header  class="w-15"> Başlangıç </th>
-                  <td mat-cell *matCellDef="let element"  class="w-15"> {{element.startTime}} </td>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header  class="w-15"> Başlangıç </th>
+                <td mat-cell *matCellDef="let element"  class="w-15"> {{element.startTime}} </td>
                 </ng-container>
             
                 <ng-container matColumnDef="endTime" >
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header  class="w-15"> Bitiş </th>
-                  <td mat-cell *matCellDef="let element"  class="w-15"> {{element.endTime}} </td>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header  class="w-15"> Bitiş </th>
+                <td mat-cell *matCellDef="let element"  class="w-15"> {{element.endTime}} </td>
                 </ng-container>
                             
                 <ng-container matColumnDef="message" >
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header  class="w-15"> Metin </th>
-                  <td mat-cell *matCellDef="let element"  class="w-100"> {{element.message}} </td>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header  class="w-15"> Metin </th>
+                <td mat-cell *matCellDef="let element"  class="w-100"> {{element.message}} </td>
                 </ng-container>
             
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -139,11 +134,20 @@
             </table>
 
         </div>
-        
+        <div class="col-md-12 mx-auto text-center">
+            <img src="/assets/images/404.svg" width="200px" height="200px" alt="404">
+        </div>
+        <div class="col-md-10 mx-auto mt-4 mb-4" >
+            Hey, Bu film içinde geçen kelimeler ne yazik ki mevcut değil. Bizlere destek olabilmek istiyorsan çekinmeden filmin alt yazısını bul ve aşağıya ekle. 1-2 dakika sonra o filmde geçen tüm kelimeleri görebiliceksin.
+        </div>
+        <div class="col-md-12 text-center mb-4">
+            <a href="#" class="btn btn-outline-danger mr-2">Bildir</a>
+            <a href="#" class="btn btn-success ml-2">Kendim eklemek istiyorum.</a>
+        </div> 
     </div>
-    
+
     <div class="col-md-12 mt-1 mb-1" >
-        <a class="btn btn-dark btn-block collapsed" data-toggle="collapse" href="#movieStatics" role="button" aria-expanded="false" aria-controls="movieStatics" >
+        <a class="btn btn-block collapsed"  [ngClass]="isSubtitleExists ? 'btn-success' : 'btn-danger'" data-toggle="collapse" href="#movieStatics" role="button" aria-expanded="false" aria-controls="movieStatics" >
             Meraklısına İstatikler
             <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-node-plus-fill float-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" d="M11 13a5 5 0 1 0-4.975-5.5H4A1.5 1.5 0 0 0 2.5 6h-1A1.5 1.5 0 0 0 0 7.5v1A1.5 1.5 0 0 0 1.5 10h1A1.5 1.5 0 0 0 4 8.5h2.025A5 5 0 0 0 11 13zm.5-7.5a.5.5 0 0 0-1 0v2h-2a.5.5 0 0 0 0 1h2v2a.5.5 0 0 0 1 0v-2h2a.5.5 0 0 0 0-1h-2v-2z"/>
@@ -164,25 +168,15 @@
                 <thead>
                   <tr>
                     <th scope="col" class="w-25">#</th>
-                    <th scope="col" class="w-25">Kelime</th>
-                    <th scope="col" class="text-center">Kullanılma Miktari</th>
+                    <th scope="col" class="w-25 text-center">Kelime</th>
+                    <th scope="col" class="w-50 text-center">Kullanılma Miktari</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td class="text-center">Otto</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td class="text-center">Thornton</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td class="text-center">the Bird</td>
+                    <td class="w-25 text-center">Mark</td>
+                    <td class="w-50 text-center">Otto</td>
                   </tr>
                 </tbody>
               </table>

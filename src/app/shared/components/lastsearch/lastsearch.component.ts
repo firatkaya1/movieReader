@@ -1,3 +1,4 @@
+import { Movie } from './../../models/Movie';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -11,6 +12,7 @@ export class LastsearchComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    
   }
 
 }

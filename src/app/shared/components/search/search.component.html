@@ -48,9 +48,9 @@
 
     <div class="row border border-dark border-bottom-0" *ngFor="let movie of movies">
         <div class="col pl-0">
-            <a target="_blank" target="_blank" [routerLink]="['/movie/', movie.movieId]" routerLinkActive="active" >
+            <a target="_blank" [routerLink]="['/movie/', movie.movieId]" routerLinkActive="active" >
                 <div *ngIf="movie.movieImg != 'NOTFOUND' ">
-                    <img [src]="movie.movieImg" width="150px" height="200px" alt="/assets/images">
+                    <img [src]="movie.movieImg" class="p-4 border " width="150px" height="200px" alt="/assets/images">
                 </div>
                 <div *ngIf="movie.movieImg == 'NOTFOUND' ">
                     <img src="/assets/images/unknown.svg" width="150px" height="200px" alt="/assets/images">
@@ -59,7 +59,7 @@
         </div>
         <div class="col-8 border-right border-dark pl-0 ">
             <h3 class="mt-2">
-                <a target="_blank" target="_blank" [routerLink]="['/movie/', movie.movieId]" routerLinkActive="active" class="text-dark" >
+                <a target="_blank" [routerLink]="['/movie/', movie.movieId]" routerLinkActive="active" class="text-dark" >
                     <span>
                         <span *ngIf=" movie.movieName.length > 20">
                             <span *ngIf=" movie.movieName.length <= 25">

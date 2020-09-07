@@ -1,3 +1,4 @@
+import { Movie } from './../../models/Movie';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LastviewComponent implements OnInit {
 
-  constructor() { }
+  public lastVisits:Movie[] = [];
+
+  constructor() {
+    var values:string[] = Object.keys(localStorage);
+    if(localStorage.length > 5) {
+      for (let index = 4; 0 <= index; index--) {
+        this.lastVisits[index] = JSON.parse(localStorage.getItem(values[index]));  
+      }
+    } else {
+      for (let index = 0; index < localStorage.length; index++) {
+        this.lastVisits[index] = JSON.parse(localStorage.getItem(values[index]));  
+      }
+    }
+   }
+
+
 
   ngOnInit(): void {
+    
+
   }
+
+  shortMovieName(val:string):string{
+    return val.substring(val.indexOf("||")+2);
+  }
+
 
 }

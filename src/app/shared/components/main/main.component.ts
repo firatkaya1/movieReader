@@ -27,7 +27,7 @@ export class MainComponent implements OnInit {
 
   public getMovies(event:any){
     this.spinner.show();
-    this.movieService.getMoviesByName(event.target.value ,"desc","movie_name",10,1).subscribe(
+    this.movieService.getMoviesByName(event.target.value ,"asc","movie_rating",10,1).subscribe(
       data => 
       { 
         this.options = data['content'];
@@ -45,4 +45,5 @@ export class MainComponent implements OnInit {
     this.router.navigateByUrl('/search?word='+val);
 
   }
+ 
 }
