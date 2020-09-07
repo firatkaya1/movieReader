@@ -134,54 +134,19 @@
             </table>
 
         </div>
-        <div class="col-md-12 mx-auto text-center">
+        <div class="col-md-12 mx-auto text-center" *ngIf="!isSubtitleExists">
             <img src="/assets/images/404.svg" width="200px" height="200px" alt="404">
         </div>
-        <div class="col-md-10 mx-auto mt-4 mb-4" >
+        <div class="col-md-10 mx-auto mt-4 mb-4" *ngIf="!isSubtitleExists">
             Hey, Bu film içinde geçen kelimeler ne yazik ki mevcut değil. Bizlere destek olabilmek istiyorsan çekinmeden filmin alt yazısını bul ve aşağıya ekle. 1-2 dakika sonra o filmde geçen tüm kelimeleri görebiliceksin.
         </div>
-        <div class="col-md-12 text-center mb-4">
+        <div class="col-md-12 text-center mb-4" *ngIf="!isSubtitleExists">
             <a href="#" class="btn btn-outline-danger mr-2">Bildir</a>
             <a href="#" class="btn btn-success ml-2">Kendim eklemek istiyorum.</a>
         </div> 
     </div>
+    
 
-    <div class="col-md-12 mt-1 mb-1" >
-        <a class="btn btn-block collapsed"  [ngClass]="isSubtitleExists ? 'btn-success' : 'btn-danger'" data-toggle="collapse" href="#movieStatics" role="button" aria-expanded="false" aria-controls="movieStatics" >
-            Meraklısına İstatikler
-            <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-node-plus-fill float-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M11 13a5 5 0 1 0-4.975-5.5H4A1.5 1.5 0 0 0 2.5 6h-1A1.5 1.5 0 0 0 0 7.5v1A1.5 1.5 0 0 0 1.5 10h1A1.5 1.5 0 0 0 4 8.5h2.025A5 5 0 0 0 11 13zm.5-7.5a.5.5 0 0 0-1 0v2h-2a.5.5 0 0 0 0 1h2v2a.5.5 0 0 0 1 0v-2h2a.5.5 0 0 0 0-1h-2v-2z"/>
-            </svg>
-            <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-node-minus-fill float-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M16 8a5 5 0 0 1-9.975.5H4A1.5 1.5 0 0 1 2.5 10h-1A1.5 1.5 0 0 1 0 8.5v-1A1.5 1.5 0 0 1 1.5 6h1A1.5 1.5 0 0 1 4 7.5h2.025A5 5 0 0 1 16 8zm-2 0a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h5A.5.5 0 0 0 14 8z"/>
-            </svg>
-        </a>
-    </div>    
-    <div class="row  p-4 collapse" id="movieStatics">
-        <div class="col-md-12 mb-4">
-            <p>                
-                Burada filmde geçen toplam kelimeleri bulabilirsin. Aşağıdaki istatistiklere göre bir kelimenin o filmde kaç kere kullanıldığı yazılmaktadır. Hata olduğunu düşünüyorsan bunu bizlere bildirebilirisin.
-            </p>
-        </div>
-        <div class="col-md-12">
-            <table class="table table-dark">
-                <thead>
-                  <tr>
-                    <th scope="col" class="w-25">#</th>
-                    <th scope="col" class="w-25 text-center">Kelime</th>
-                    <th scope="col" class="w-50 text-center">Kullanılma Miktari</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td class="w-25 text-center">Mark</td>
-                    <td class="w-50 text-center">Otto</td>
-                  </tr>
-                </tbody>
-              </table>
-        </div>                
-    </div>
 
     <div class="col-md-12">
         <a class="btn btn-dark btn-block collapsed" data-toggle="collapse" href="#movieError" role="button" aria-expanded="false" aria-controls="movieError" >

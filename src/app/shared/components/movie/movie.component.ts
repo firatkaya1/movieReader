@@ -1,3 +1,5 @@
+import { Statics } from './../../models/Statics';
+import { element } from 'protractor';
 import { Subtitle } from './../../models/Subtitle';
 import { Movie } from './../../models/Movie';
 import { MovieService } from './../../services/movie.service';
@@ -7,8 +9,6 @@ import { MatTableDataSource } from '@angular/material/table';
 import {MatSort} from '@angular/material/sort';
 import { ActivatedRoute } from '@angular/router';
 import { NgxSpinnerService } from "ngx-spinner";
-
-
 
 
 @Component({
@@ -31,9 +31,9 @@ export class MovieComponent implements OnInit {
   }  
   displayedColumns: string[] = ['startTime', 'endTime', 'line', 'message'];
   dataSource = new MatTableDataSource(this.movies);
-
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
+
 
   ngOnInit() {
     this.spinner.show();
@@ -42,11 +42,10 @@ export class MovieComponent implements OnInit {
     this.movieService.getMovieById(this.movieId).subscribe(
       data => {
         this.movieInfo = data;
-        this.movieService.getSubtitle("123").subscribe(
+        this.movieService.getSubtitle("1243").subscribe(
           (data) => { 
             this.dataSource.data = data; 
-            this.isSubtitleExists = true; 
-            this.getStatics(data);},
+            this.isSubtitleExists = true;},
           (error)=> { this.isSubtitleExists = false; });
         
       });
@@ -65,19 +64,5 @@ export class MovieComponent implements OnInit {
     return Number(rating.substring(0,3).replace(".",""));
   }
 
-  getStatics(mov:Subtitle[]){
-    var words:string[];
-    var nWords  = [];
-    for (let index = 0; index < mov.length; index++) {
-      words = mov[index].message.split(" ");
-      nWords.concat(words); 
-    }
-
-    nWords.forEach(element => {
-      console.log(element)
-    });
-  }
-
   
-
 }
