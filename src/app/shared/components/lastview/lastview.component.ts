@@ -16,6 +16,10 @@ export class LastviewComponent implements OnInit {
       for (let index = 4; 0 <= index; index--) {
         this.lastVisits[index] = JSON.parse(localStorage.getItem(values[index]));  
       }
+      for(let index=0;index < localStorage.length-5;index++){
+        console.log("silindi");
+        localStorage.removeItem(values[index]);
+      }
     } else {
       for (let index = 0; index < localStorage.length; index++) {
         this.lastVisits[index] = JSON.parse(localStorage.getItem(values[index]));  

@@ -42,6 +42,7 @@ export class MovieComponent implements OnInit {
     this.movieService.getMovieById(this.movieId).subscribe(
       data => {
         this.movieInfo = data;
+        localStorage.setItem(data.movieId,JSON.stringify(data));
         this.movieService.getSubtitle("1243").subscribe(
           (data) => { 
             this.dataSource.data = data; 
@@ -64,5 +65,6 @@ export class MovieComponent implements OnInit {
     return Number(rating.substring(0,3).replace(".",""));
   }
 
+  
   
 }

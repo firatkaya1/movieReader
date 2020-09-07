@@ -127,7 +127,7 @@
             <small id="emailHelp" class="form-text text-muted">İstediğin filmi bulamadın mı ? O zaman bunu bize bildir senin için ekleyelim..</small>
     </div>
     <div class="col-md-2 mt-2 text-left">
-            <button class="btn btn-outline-success btn-block mt-4" (click)="redirectMovie(searchMovie.value)" >Arama Yap</button>
+            <button class="btn btn-outline-success btn-block mt-4" *ngIf="searchMovie.value.length > 0  " (click)="redirectMovie(searchMovie.value)" >Arama Yap</button>
     </div>
 </div>
     

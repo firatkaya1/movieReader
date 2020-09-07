@@ -27,13 +27,13 @@ export class MainComponent implements OnInit {
 
   public getMovies(event:any){
     this.spinner.show();
-    this.movieService.getMoviesByName(event.target.value ,"asc","movie_rating",10,1).subscribe(
+    this.movieService.getMoviesByName(event.target.value ,"desc","movie_vote",10,1).subscribe(
       data => 
       { 
         this.options = data['content'];
         setTimeout(() => {
           this.spinner.hide();
-         
+          
         }, 1000);
  
       })
