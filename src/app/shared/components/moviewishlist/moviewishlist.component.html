@@ -1,3 +1,4 @@
+
 <div class="row mb-4 p-2">
     <div class="col-12 text-center">
         <img src="/assets/images/search7.svg" width="250px" height="250px" alt="howitworks">
@@ -34,123 +35,26 @@
         <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">İstek Bildirilen Tarih*</th>
-                <th scope="col">Film İsmi*</th>
-                <th scope="col">Yönetmen İsmi*</th>
+                <th scope="col">İstek Bildirilen Tarih</th>
+                <th scope="col">Film İsmi</th>
+                <th scope="col">Yönetmen İsmi</th>
                 <th scope="col">Aciliyet</th>
-                <th scope="col">İşlem Durumu</th>
+                <th scope="col">Durum</th>
+                <th scope="col">Dil</th>
                 <th scope="col">Detay</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
+            <tr *ngFor="let movie of movieWishes;">
                 <th scope="row">1</th>
-                <td>2019/12/11</td>
-                <td>Game Of Thrones</td>
-                <td>Yok</td>
-                <td><button class="aciliyet">102</button></td>
-                <td class="durum">İnceleniyor.</td>
+                <td> {{ movie.date }} </td>
+                <td> {{ movie.movieName }} </td>
+                <td> {{ movie.directorName }} </td>
+                <td> {{ movie.urgentCode }}</td>
+                <td> {{ movie.statusCode }} </td>
+                <td> {{ movie.language }} </td>
                 <td>
-                    <a href="detayliincele.html" class="btn btn-success btn-sm ">Detaylı İncele</a>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>2019/11/06</td>
-                <td>Bir Gün</td>
-                <td>John Docato</td>
-                <td><button class="aciliyet">101</button></td>
-                <td class="durum">Bulunamadı.</td>
-                <td>
-                    <a href="detayliincele.html" class="btn btn-success btn-sm ">Detaylı İncele</a>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>2019/12/11</td>
-                <td>Game Of Thrones</td>
-                <td>Yok</td>
-                <td><button class="aciliyet">103</button></td>
-                <td class="durum">Eklendi.</td>
-                <td>
-                    <a href="detayliincele.html" class="btn btn-success btn-sm ">Detaylı İncele</a>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">4</th>
-                <td>2019/12/11</td>
-                <td>Game Of Thrones</td>
-                <td>Yok</td>
-                <td><button class="aciliyet">101</button></td>
-                <td class="durum">İnceleniyor.</td>
-                <td>
-                    <a href="detayliincele.html" class="btn btn-success btn-sm ">Detaylı İncele</a>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">5</th>
-                <td>2019/12/11</td>
-                <td>Game Of Thrones</td>
-                <td>Yok</td>
-                <td><button class="aciliyet">101</button></td>
-                <td class="durum">İnceleniyor.</td>
-                <td>
-                    <a href="detayliincele.html" class="btn btn-success btn-sm ">Detaylı İncele</a>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">6</th>
-                <td>2019/12/11</td>
-                <td>Game Of Thrones</td>
-                <td>Yok</td>
-                <td><button class="aciliyet">102</button></td>
-                <td class="durum">İnceleniyor.</td>
-                <td>
-                    <a href="detayliincele.html" class="btn btn-success btn-sm ">Detaylı İncele</a>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">7</th>
-                <td>2019/12/11</td>
-                <td>Game Of Thrones</td>
-                <td>Yok</td>
-                <td><button class="aciliyet">102</button></td>
-                <td class="durum">İnceleniyor.</td>
-                <td>
-                    <a href="detayliincele.html" class="btn btn-success btn-sm ">Detaylı İncele</a>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">8</th>
-                <td>2019/12/11</td>
-                <td>Game Of Thrones</td>
-                <td>Yok</td>
-                <td><button class="aciliyet">103</button></td>
-                <td class="durum">Bulunamadı.</td>
-                <td>
-                    <a href="detayliincele.html" class="btn btn-success btn-sm ">Detaylı İncele</a>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">9</th>
-                <td>2019/12/11</td>
-                <td>Game Of Thrones</td>
-                <td>Yok</td>
-                <td><button class="aciliyet">101</button></td>
-                <td class="durum">Eklendi.</td>
-                <td>
-                    <a href="detayliincele.html" class="btn btn-success btn-sm ">Detaylı İncele</a>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">10</th>
-                <td>2019/12/11</td>
-                <td>Game Of Thrones</td>
-                <td>Yok</td>
-                <td><button class="aciliyet">102</button></td>
-                <td class="durum">Eklendi.</td>
-                <td>
-                    <a href="detayliincele.html" class="btn btn-success btn-sm ">Detaylı İncele</a>
+                    <a class="btn btn-success btn-sm ">Detaylı İncele</a>
                 </td>
             </tr>
         </tbody>

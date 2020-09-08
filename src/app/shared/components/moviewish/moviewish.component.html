@@ -14,56 +14,123 @@
         <h1 class="text-gradient">İstek Bildirimi</h1>
     </div>
     <div class="col">
-        <form>
+        <form [formGroup]="movieWish" (ngSubmit)="ngOnSubmit()">
             <div class="form-group row">
                 <label for="situtation" class="col-sm-2 col-form-label">Aciliyet Durumu</label>
                 <div class="col-sm-10">
-                    <select class="custom-select" id="situtation">
-                        <option selected>Aciliyet Durumunu Seçiniz.</option>
-                        <option value="1">Acil - 101</option>
-                        <option value="2">Çok acil değil - 102</option>
-                        <option value="3">Bekleyebilirim - 103</option>
-                      </select>
+                    <select class="custom-select" id="situtation" 
+                    placeholder="Aciliyet durumunu seçiniz."
+                    formControlName="urgentCode"
+                    [class.is-valid]="movieWish.get('urgentCode').valid" 
+                    [class.is-invalid]="movieWish.get('urgentCode').invalid && (movieWish.get('urgentCode').dirty || movieWish.get('urgentCode').touched)">
+                        <option value="103" [selected]="true">Lütfen aciliyet durumunu belirtiniz.</option>
+                        <option value="101" >Acil.</option>
+                        <option value="102">Çok acil değil.</option>
+                        <option value="104">Keyfi</option>
+                    </select>
+                    <div *ngIf="movieWish.get('urgentCode').invalid && (movieWish.get('urgentCode').dirty || movieWish.get('urgentCode').touched)" class="text-danger">
+                        <div *ngIf="movieWish.get('urgentCode').errors.required">
+                           <p>Bu alan boş bırakılamaz.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="form-group row">
-                <label for="bookname" class="col-sm-2 col-form-label">Film İsmi </label>
+                <label for="moviename" class="col-sm-2 col-form-label">Film İsmi </label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="bookname" placeholder="Zorunlu Alan*">
+                    <input type="text" class="form-control" id="moviename" 
+                    formControlName="movieName" 
+                    [class.is-valid]="movieWish.get('movieName').valid"
+                    [class.is-invalid]="movieWish.get('movieName').invalid && (movieWish.get('movieName').dirty || movieWish.get('movieName').touched)"
+                    placeholder="Zorunlu Alan*">
+                    <div *ngIf="movieWish.get('movieName').invalid && (movieWish.get('movieName').dirty || movieWish.get('movieName').touched)" class="text-danger">
+                        <div *ngIf="movieWish.get('movieName').errors.required">
+                           <p>Bu alan boş bırakılamaz.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="form-group row">
                 <label for="writtername" class="col-sm-2 col-form-label">Yönetmen Adı</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="writtername" placeholder="Zorunlu Alan*">
+                    <input type="text" class="form-control" id="writtername" 
+                    formControlName="directorName"  
+                    [class.is-valid]="movieWish.get('directorName').valid"
+                    [class.is-invalid]="movieWish.get('directorName').invalid && (movieWish.get('directorName').dirty || movieWish.get('directorName').touched)"
+                    placeholder="Zorunlu Alan*">
+                    <div *ngIf="movieWish.get('directorName').invalid && (movieWish.get('directorName').dirty || movieWish.get('directorName').touched)" class="text-danger">
+                        <div *ngIf="movieWish.get('directorName').errors.required">
+                           <p>Bu alan boş bırakılamaz.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="form-group row">
                 <label for="language" class="col-sm-2 col-form-label">İstenilen Dil</label>
                 <div class="col-sm-10">
-                    <select class="custom-select" id="language">
-                        <option selected>Türkçe</option>
-                        <option value="1">İngilizce</option>
-                        <option value="2">Almanca</option>
-                      </select>
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="message" class="col-sm-2 col-form-label">Mesajınız</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" id="message">
+                    <select class="custom-select" id="language" 
+                    formControlName="language"
+                    
+                    [class.is-valid]="movieWish.get('language').valid"
+                    [class.is-invalid]="movieWish.get('language').invalid && (movieWish.get('language').dirty || movieWish.get('language').touched)">
+                        <option value="EN" [selected]="true">Lütfen bir dil seçiniz.</option>
+                        <option value="TR" >Türkçe</option>
+                        <option value="EN">İngilizce</option>
+                        <option value="DE">Almanca</option>
+                    </select>
+                    <div *ngIf="movieWish.get('language').invalid && (movieWish.get('language').dirty || movieWish.get('language').touched)" class="text-danger">
+                        <div *ngIf="movieWish.get('language').errors.required">
+                           <p>Bu alan boş bırakılamaz.</p>
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
             <div class="form-group row">
                 <label for="email" class="col-sm-2 col-form-label">Email Adresi</label>
                 <div class="col-sm-10">
-                    <input type="email" class="form-control" id="email">
+                    <input type="email" class="form-control" 
+                    formControlName="emailAddress" 
+                    [class.is-valid]="movieWish.get('emailAddress').valid"
+                    [class.is-invalid]="movieWish.get('emailAddress').invalid && (movieWish.get('emailAddress').dirty || movieWish.get('emailAddress').touched)"
+                    id="email"
+                    placeholder="name@example.com">
+                    <div *ngIf="movieWish.get('emailAddress').invalid && (movieWish.get('emailAddress').dirty || movieWish.get('emailAddress').touched)" class="text-danger">
+                        <div *ngIf="movieWish.get('emailAddress').errors.required">
+                           <p>Bu alan boş bırakılamaz.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="message" class="col-sm-2 col-form-label">Mesajınız</label>
+                <div class="col-sm-10">
+                    <textarea class="form-control" id="emailAddress" 
+                    rows="3"
+                    formControlName="message" 
+                    [class.is-valid]="movieWish.get('message').valid"
+                    [class.is-invalid]="movieWish.get('message').invalid && (movieWish.get('message').dirty || movieWish.get('message').touched)"
+                    id="message" placeholder="Lütfen belirtmek istediğiniz ek detayları yazınız."></textarea>
+                    <div *ngIf="movieWish.get('message').invalid && (movieWish.get('message').dirty || movieWish.get('message').touched)" class="text-danger">
+                        <div *ngIf="movieWish.get('message').errors.required">
+                           <p>Bu alan boş bırakılamaz.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="form-group row">
                 <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck1">
-                    <label class="custom-control-label" for="customCheck1">Film bulunduğunda email gelmesini istiyorum.</label>
+                    <input type="checkbox" class="custom-control-input" 
+                    formControlName="isSendMessage" 
+                    [class.is-valid]="movieWish.get('isSendMessage').valid"
+                    [class.is-invalid]="movieWish.get('isSendMessage').invalid && (movieWish.get('isSendMessage').dirty || movieWish.get('isSendMessage').touched)"
+                    id="customCheck1">
+                    <label class="custom-control-label"  for="customCheck1">Film bulunduğunda mail adresime bildirim gelmesini istiyorum.</label>
+                    <div *ngIf="movieWish.get('isSendMessage').invalid && (movieWish.get('isSendMessage').dirty || movieWish.get('isSendMessage').touched)" class="text-danger">
+                        <div *ngIf="movieWish.get('isSendMessage').errors.required">
+                           <p>Bu alan boş bırakılamaz.</p>
+                        </div>
+                    </div>
 
                 </div>
             </div>
@@ -74,7 +141,7 @@
             </div>
             <div class="form-group row">
                 <div class="col-sm-10  mt-2">
-                    <button type="submit " class="btn btn-success btn-block ">İstek Bildirisi Tamamla.</button>
+                    <button type="submit " class="btn btn-success btn-block"  [disabled]="movieWish.invalid">İstek Bildirisi Tamamla.</button>
                 </div>
                 <div class="col-sm-2 mt-2">
                     <button type="submit " class="btn btn-danger btn-block ">Temizle</button>
@@ -84,3 +151,16 @@
         </form>
     </div>
 </div>
+
+    <div *ngIf="isSuccess == 1 ? true : false " class="alert alert-primary alert-dismissible fade show fixed-top  m-4 border-dark" role="alert">
+        <strong>Harika !</strong> <span> İstek bildirimi başarıyla gönderildi. İstek Listesine yönlendiriliyorsun.</span> 
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div *ngIf="isSuccess == 0 ? true : false" class="alert alert-danger alert-dismissible fade show fixed-top  m-4 border-dark" role="alert">
+        <strong>Opss !</strong> <span> Bilinmeyen bir hata meydana geldi. Lütfen tekrar dene.</span> 
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>

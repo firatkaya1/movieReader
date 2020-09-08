@@ -1,3 +1,5 @@
+import { MovieWish } from './../../models/MovieWish';
+import { MovieService } from './../../services/movie.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MoviewishlistComponent implements OnInit {
 
-  constructor() { }
+  public movieWishes:MovieWish[];
+
+  constructor(private movieService:MovieService) { }
+
 
   ngOnInit(): void {
+    this.movieService.getMovieWish("asc","date",10,1).subscribe(data => { this.movieWishes = data['content']});
   }
 
 }

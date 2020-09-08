@@ -29,6 +29,7 @@ import { ApiComponent } from './shared/components/api/api.component';
 import { DocumentComponent } from './document/document.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxSpinnerModule } from "ngx-spinner";
+import { MoviewishdetailComponent } from './shared/components/moviewishdetail/moviewishdetail.component';
 
 
 
@@ -49,7 +50,8 @@ import { NgxSpinnerModule } from "ngx-spinner";
     LastviewComponent,
     AboutusComponent,
     ApiComponent,
-    DocumentComponent
+    DocumentComponent,
+    MoviewishdetailComponent
 
   ],
   imports: [
