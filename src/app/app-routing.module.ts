@@ -1,3 +1,4 @@
+import { MoviewishdetailComponent } from './shared/components/moviewishdetail/moviewishdetail.component';
 import { ApiComponent } from './shared/components/api/api.component';
 import { ContactComponent } from './shared/components/contact/contact.component';
 import { AboutusComponent } from './shared/components/aboutus/aboutus.component';
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path:'movie/:id',component:MovieComponent},
   {path:'wish',component:MoviewishComponent},
   {path:'wish/list',component:MoviewishlistComponent},
+  {path:'wish/list/:id',component:MoviewishdetailComponent},
   {path:'me/about',component:AboutusComponent},
   {path:'me/contact',component:ContactComponent},
   {path:'me/api',component:ApiComponent},

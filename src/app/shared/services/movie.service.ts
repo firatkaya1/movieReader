@@ -76,4 +76,8 @@ export class MovieService {
     return this.http.post<MovieWish[]>(this.root.concat(this.movieWishListURI),body);
   }
 
+  getMovieWishDataById(id:string){
+    return this.http.get<MovieWish>(this.root.concat(this.movieWishListURI).concat("/").concat(id));
+  }
+
 }

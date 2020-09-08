@@ -4,6 +4,7 @@ export interface MovieWish {
     movieName:string;
     directorName:string;
     language:string;
+    date:string;
     message:string;
     isSendMessage:boolean;
 

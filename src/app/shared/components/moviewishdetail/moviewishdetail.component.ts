@@ -1,3 +1,6 @@
+import { MovieWish } from './../../models/MovieWish';
+import { MovieService } from './../../services/movie.service';
+import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MoviewishdetailComponent implements OnInit {
 
-  constructor() { }
+  public wishId:string;
+  public movieWish:MovieWish;
+
+  constructor(private route: ActivatedRoute,private movieService:MovieService) { 
+    this.route.paramMap.subscribe(params => {
+      this.wishId = params.get('id');
+
+    });
+  }
 
   ngOnInit(): void {
+    this.movieService.getMovieWishDataById(this.wishId).subscribe(data => {this.movieWish = data;} )
   }
 
 }

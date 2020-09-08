@@ -1,1 +1,74 @@
-<p>moviewishdetail works!</p>
+<div class="row mt-4">
+    <div class="col-md-12 text-center">
+        <img src="/assets/images/find.svg" width="200px" height="200px" alt="find">
+        <figcaption class="figure-caption">Hey, Are you curious still ?</figcaption>
+
+    </div>
+</div>
+{{ movieWish | json }}
+<div class="row mt-4">
+    <table class="table table-striped col-md-8 mx-auto border" >
+        <caption>List of Informations</caption>
+        <thead>
+            <tr>
+              <th scope="col">Başlık</th>
+              <th scope="col">Açıklama</th>
+            </tr>
+          </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Tarih</th>
+            <td>{{ movieWish.date }}</td>
+          </tr> 
+          <tr>
+            <th scope="row">Aciliyet Durumu</th>
+            <td>
+                <span *ngIf="movieWish.urgentCode==101">
+                    <h5 class="p-0 m-0" style="cursor: pointer;">
+                        <span class="badge badge-pill badge-danger" data-toggle="tooltip" data-placement="right" title="Acil gereksinimi ifade eder.">101</span>
+                    </h5>
+                </span>
+                <span *ngIf="movieWish.urgentCode==102">
+                    <span class="badge badge-pill badge-danger">102</span>
+                </span>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Film İsmi</th>
+            <td>{{ movieWish.movieName }}</td>
+          </tr>
+          <tr>
+            <th scope="row">Yönetmen İsmi</th>
+            <td> {{ movieWish.directorName }} </td>
+          </tr>
+          <tr>
+            <th scope="row">İstenilen Dil</th>
+            <td>
+                <span *ngIf="movieWish.language=='EN'" >
+                    <span data-toggle="tooltip" data-placement="right" title="Acil gereksinimi ifade eder.">
+                        <img src="/assets/images/uk.svg" class="p-0 m-0" width="25px" height="25px" alt="uk">
+                    </span>
+                    
+                </span>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Bırakılan Mesaj</th>
+            <td> {{ movieWish.message}} </td>
+          </tr>
+          <tr>
+            <th scope="row">Son Durum</th>
+            <td> {{ movieWish.statusCode }} </td>
+          </tr>
+        </tbody>
+      </table>
+
+
+    <div class="w-100" style="height: 50px;"></div>
+   
+
+
+
+</div>
+
+
